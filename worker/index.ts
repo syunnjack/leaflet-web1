@@ -29,6 +29,15 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (url.hostname === "spotpalette.com" || url.hostname === "www.spotpalette.com" || url.hostname === "spotpalette.net" || url.hostname === "www.spotpalette.net") {
+      return Response.redirect(`https://spotpalette.jp${url.pathname}${url.search}`, 301);
+    }
+
+    if ((url.hostname === "spotpalette.app" || url.hostname === "www.spotpalette.app") && url.pathname === "/") {
+      url.pathname = "/app";
+      request = new Request(url, request);
+    }
+
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
       return handleImageOptimization(request, {

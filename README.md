@@ -1,6 +1,8 @@
-# MAPPIN Web
+# SPOTPALETTE Web
 
 Leafletの地図と検索結果一覧を連動させた、10業種共通のローカル検索MVPです。
+
+正式URLは `https://spotpalette.jp`。`.com` と `.net` は `.jp` へ301転送し、`.app` はアプリ紹介ページとして使用します。
 
 - 10カテゴリの絞り込み・全文検索
 - 地図マーカーと施設カードの双方向選択
